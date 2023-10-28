@@ -1,15 +1,16 @@
 <template>
     <aside class="w-12 rounded-md bg-green-100">
-        <nav class="flex flex-col items-center gap-6 py-2">
+        <nav class="flex flex-col gap-6 py-2">
             <NuxtLink
                 v-for="link in navLinks"
                 :key="link.id"
                 :to="link.path"
-                activeClass="border-4"
+                class="w-full text-center border-4 border-green-100"
+                activeClass="border-x-green-500"
             >
                 <Icon
                     :name="link.icon"
-                    class="text-lg text-slate-700 hover:text-green-800"
+                    class="text-lg text-green-900 hover:text-green-500"
                 />
             </NuxtLink>
         </nav>

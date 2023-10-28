@@ -2,7 +2,7 @@
     <header class="flex justify-between text-green-500">
         <div>
             <p class="font-xl font-semibold">{{ currentDatetime.time }}</p>
-            <p class="text-sm">{{ currentDatetime.date }}</p>
+            <p class="text-sm font-medium">{{ currentDatetime.date }}</p>
         </div>
         <div class="relative">
             <span class="text-2xl font-semibold">
@@ -18,7 +18,7 @@
                 class="absolute right-2 top-4 w-40 bg-green-200 rounded shadow-lg"
             >
                 <div
-                    v-for="(city, index) in cities"
+                    v-for="city in cities"
                     :key="city.id"
                     class="py-2 px-4 cursor-pointer hover:bg-green-100 flex items-center text-sm text-green-800"
                     @click="selectCity(city)"
@@ -33,9 +33,10 @@
 <script setup lang="ts">
 import { reactive, onUnmounted } from "vue";
 
-import moment from "moment";
+import type City from "~/model/city";
+import { getCurrentDate, getCurrentTime } from "~/utils/datetime";
 
-const cities = [
+const cities: City[] = [
     { id: "1", name: "Kolkata", lat: "22.5726", lon: "88.3639" },
     { id: "2", name: "Delhi", lat: "28.7041", lon: "77.1025" },
     { id: "3", name: "Hyderabad", lat: "17.3850", lon: "78.4867" },
@@ -50,19 +51,21 @@ const toogleDropdown = () => {
     cityDropdown.isOpen = !cityDropdown.isOpen;
 };
 
-const selectCity = (city) => {
+const selectCity = (city: City) => {
     cityDropdown.selected = city;
     cityDropdown.isOpen = false;
 };
 
 const currentDatetime = reactive({
-    date: moment().format("ddd, DD MMM YYYY"),
-    time: moment().format("hh:mm:ss A"),
+    date: getCurrentDate(),
+    time: getCurrentTime(),
 });
+
 const updateTime = () => {
-    currentDatetime.date = moment().format("ddd, DD MMM YYYY");
-    currentDatetime.time = moment().format("hh:mm:ss A");
+    currentDatetime.date = getCurrentDate();
+    currentDatetime.time = getCurrentTime();
 };
+
 const interval = setInterval(updateTime, 1000);
 
 onUnmounted(() => {

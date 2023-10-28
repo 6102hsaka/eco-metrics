@@ -17,7 +17,9 @@
 </template>
 
 <script setup lang="ts">
-const navLinks = [
+import type AppRoute from "~/model/app-route";
+
+const navLinks: AppRoute[] = [
     {
         id: "1",
         icon: "pajamas:overview",

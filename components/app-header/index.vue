@@ -6,7 +6,7 @@
         </div>
         <div class="relative">
             <span class="text-2xl font-semibold">
-                {{ cityDropdown.selected.name }}
+                {{ selectedCity.name }}
             </span>
             <Icon
                 name="fe:drop-down"
@@ -14,7 +14,7 @@
                 @click="toogleDropdown"
             />
             <div
-                v-if="cityDropdown.isOpen"
+                v-if="isCityDropdownOpen"
                 class="absolute right-2 top-4 w-40 bg-green-200 rounded shadow-lg"
             >
                 <div
@@ -31,29 +31,20 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, onUnmounted } from "vue";
-
 import type City from "~/model/city";
+import useSelectedCity, { cities } from "~/composables/city";
 import { getCurrentDate, getCurrentTime } from "~/utils/datetime";
 
-const cities: City[] = [
-    { id: "1", name: "Kolkata", lat: "22.5726", lon: "88.3639" },
-    { id: "2", name: "Delhi", lat: "28.7041", lon: "77.1025" },
-    { id: "3", name: "Hyderabad", lat: "17.3850", lon: "78.4867" },
-    { id: "4", name: "Bangalore", lat: "12.9716", lon: "77.5946" },
-];
-const cityDropdown = reactive({
-    isOpen: false,
-    selected: cities[0],
-});
+const isCityDropdownOpen = ref(false);
+const { selectedCity, setSelectedCity } = useSelectedCity();
 
 const toogleDropdown = () => {
-    cityDropdown.isOpen = !cityDropdown.isOpen;
+    isCityDropdownOpen.value = !isCityDropdownOpen.value;
 };
 
 const selectCity = (city: City) => {
-    cityDropdown.selected = city;
-    cityDropdown.isOpen = false;
+    setSelectedCity(city);
+    isCityDropdownOpen.value = false;
 };
 
 const currentDatetime = reactive({

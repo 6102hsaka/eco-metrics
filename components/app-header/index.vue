@@ -1,16 +1,16 @@
 <template>
-    <header class="flex justify-between text-green-500">
+    <header class="flex justify-between text-green-700">
         <div>
             <p class="font-xl font-semibold">{{ currentDatetime.time }}</p>
             <p class="text-sm font-medium">{{ currentDatetime.date }}</p>
         </div>
         <div class="relative">
-            <span class="text-2xl font-semibold">
+            <span class="text-xl font-semibold">
                 {{ selectedCity.name }}
             </span>
             <Icon
                 name="fe:drop-down"
-                class="ml-2 text-sm"
+                class="ml-1 text-sm"
                 @click="toogleDropdown"
             />
             <div

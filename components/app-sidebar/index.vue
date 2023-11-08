@@ -1,5 +1,5 @@
 <template>
-    <aside class="w-12 rounded-md bg-green-100">
+    <aside class="w-12 h-42 rounded-md bg-green-100">
         <nav class="flex flex-col gap-6 py-2">
             <NuxtLink
                 v-for="link in navLinks"

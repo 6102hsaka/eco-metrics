@@ -14,7 +14,7 @@ export default defineNuxtConfig({
             "@nuxtjs/google-fonts",
             {
                 families: {
-                    "Open+Sans": [400, 500, 600],
+                    Lexend: [400, 500, 600],
                 },
             },
         ],

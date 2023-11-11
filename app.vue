@@ -3,7 +3,7 @@
         <app-sidebar />
         <div class="w-full">
             <app-header />
-            <main>
+            <main class="py-4">
                 <NuxtPage />
             </main>
         </div>

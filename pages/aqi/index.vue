@@ -1,6 +1,6 @@
 <template>
     <section
-        class="my-4 p-4 text-zinc-50 rounded-lg flex items-center"
+        class="p-4 text-zinc-50 rounded-lg flex items-center"
         :style="{ backgroundColor: color.light }"
     >
         <div

@@ -58,10 +58,10 @@ export default defineEventHandler(async (event) => {
         const data = {
             weather: response.data.weather,
             main: {
-                temp: response.data.main.temp - 273,
-                feels_like: response.data.main.feels_like - 273,
-                temp_min: response.data.main.temp_min - 273,
-                temp_max: response.data.main.temp_max - 273,
+                temp: Math.round(response.data.main.temp - 273),
+                feels_like: Math.round(response.data.main.feels_like - 273),
+                temp_min: Math.round(response.data.main.temp_min - 273),
+                temp_max: Math.round(response.data.main.temp_max - 273),
                 pressure: response.data.main.pressure,
                 humidity: response.data.main.humidity,
             },
